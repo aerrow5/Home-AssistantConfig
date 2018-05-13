@@ -1,0 +1,50 @@
+#################################################################
+## Groups
+#################################################################
+
+#default_view:
+#  view: yes
+#  icon: mdi:home-assistant
+#  entities:
+#    - group.datetime
+#    - group.energy
+#    - group.statedevices
+
+datetime:
+  name: Vandaag
+  entities:
+    - sensor.date__time
+    - sensor.sunrise_time
+    - sensor.sunset_time
+
+energy:
+  name: Energie
+  entities:
+    - sensor.huidig_solar_vermogen
+    - sensor.huidig_stroomverbruik
+
+statedevices:
+  name: Devices
+  entities:
+    - device_tracker.davidsiphone
+    - device_tracker.geesm
+    - device_tracker.i4arthur
+
+meteo:
+  name: Meteo
+  entities:
+    - sensor.temperatuur_buiten_dak
+    - sensor.vochtigheid_buiten
+    - sensor.dauwpunt
+    - sensor.chill_wind
+    - sensor.barometer
+    - sensor.temperatuur_binnen_keuken
+    - sensor.vochtigheid_binnen
+    - sensor.regen_vandaag
+    - sensor.regen_24h
+    - sensor.regenval_ratio_24h
+    - sensor.regen_ratio
+    - sensor.windsnelheid
+    - sensor.windrichting
+    - sensor.windsnelheid_max
+

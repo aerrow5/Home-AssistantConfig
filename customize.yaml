@@ -1,0 +1,13 @@
+sun.sun: {}
+
+sensor.sunrise_time:
+  icon: mdi:weather-sunset-up
+
+sensor.sunset_time:
+  icon: mdi:weather-sunset-down
+
+sensor.huidig_solar_vermogen:
+  icon: mdi:weather-sunny
+
+sensor.huidig_stroomverbruik:
+  icon: mdi:flash

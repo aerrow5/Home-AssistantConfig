@@ -1,0 +1,19 @@
+###############################
+# Cameras
+###############################
+
+#- platform: mjpeg
+#  mjpeg_url: !secret 3dprinter_camera_url
+#  name: 3D Printer
+
+- platform: generic
+  still_image_url: !secret mobitix_url
+  name: Oprit
+
+- platform: generic
+  still_image_url: https://api.buienradar.nl/image/1.0/RadarMapNL?w=500&h=512
+  name: Buienradar
+
+- platform: generic
+  still_image_url: https://images.lightningmaps.org/blitzortung/europe/index.php?map=5&t=5017492
+  name: Lightningmaps

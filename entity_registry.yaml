@@ -1,0 +1,16 @@
+media_player.woonkamer_apple_tv:
+  name:
+  platform: apple_tv
+  unique_id: d11efaf3e6441f2051929b76de2a66face9bf55ef1120de1ef0e1d07ab9541d8
+remote.woonkamer_apple_tv:
+  name:
+  platform: apple_tv
+  unique_id: d11efaf3e6441f2051929b76de2a66face9bf55ef1120de1ef0e1d07ab9541d8
+media_player.david_slaapkamer_stereo:
+  name:
+  platform: cast
+  unique_id: 0a999f87-d66d-9145-2d24-61cb882ba560
+media_player.mc_audio:
+  name: Sonos
+  platform: sonos
+  unique_id: RINCON_000E5827C8FC01400
