@@ -1,0 +1,105 @@
+# Definitions of all sensors:
+# sensor:
+
+# Weewx sensors of meteostation:
+- platform: mqtt
+  state_topic: "domotica/weewx/loop"
+  name: "Temperatuur buiten (dak)"
+  unit_of_measurement: "°C"
+  icon: mdi:thermometer
+  value_template: '{{ value_json.outTemp_C | round(1) }}'
+
+- platform: mqtt
+  state_topic: "domotica/weewx/loop"
+  name: "Vochtigheid buiten"
+  unit_of_measurement: "%"
+  icon: mdi:water-percent
+  value_template: '{{ value_json.outHumidity | round(1) }}'
+
+- platform: mqtt
+  state_topic: "domotica/weewx/loop"
+  name: "Dauwpunt"
+  unit_of_measurement: "°C"
+  icon: mdi:oil-temperature
+  value_template: '{{ value_json.dewpoint_C | round(1) }}'
+
+- platform: mqtt
+  state_topic: "domotica/weewx/loop"
+  name: "Chill wind"
+  unit_of_measurement: "°C"
+  icon: mdi:thermometer-lines
+  value_template: '{{ value_json.windchill_C | round(1) }}'
+
+- platform: mqtt
+  state_topic: "domotica/weewx/loop"
+  name: "Barometer"
+  unit_of_measurement: "mbar"
+  value_template: '{{ value_json.altimeter_mbar | round(1) }}'
+
+## temp & moisture inside
+- platform: mqtt
+  state_topic: "domotica/weewx/loop"
+  name: "Temperatuur binnen (keuken)"
+  unit_of_measurement: "°C"
+  icon: mdi:thermometer
+  value_template: '{{ value_json.inTemp_C | round(1) }}'
+
+- platform: mqtt
+  state_topic: "domotica/weewx/loop"
+  name: "Vochtigheid binnen"
+  unit_of_measurement: "%"
+  icon: mdi:water-percent
+  value_template: '{{ value_json.inHumidity | round(1) }}'
+
+## rain: fallen 24h, ratio, last hour:
+- platform: mqtt
+  state_topic: "domotica/weewx/loop"
+  name: "Regen (vandaag)"
+  unit_of_measurement: "mm"
+  icon: mdi:water
+  value_template: '{{ float(value_json.rain_cm)*100 }}'
+
+- platform: mqtt
+  state_topic: "domotica/weewx/loop"
+  name: "Regen (24h)"
+  unit_of_measurement: "mm"
+  icon: mdi:water
+  value_template: '{{ float(value_json.rain24_cm)*100 }}'
+
+- platform: mqtt
+  state_topic: "domotica/weewx/loop"
+  name: "Regenval ratio (24h)"
+  unit_of_measurement: "mm"
+  icon: mdi:water
+  value_template: '{{ float(value_json.hourRain_cm)*100 }}'
+
+- platform: mqtt
+  state_topic: "domotica/weewx/loop"
+  name: "Regen ratio"
+  unit_of_measurement: "mm/h"
+  icon: mdi:water
+  value_template: '{{ float(value_json.rainRate_cm_per_hour)*100 }}'
+
+## Wind speed, gusts and direction
+
+- platform: mqtt
+  state_topic: "domotica/weewx/loop"
+  name: "Windsnelheid"
+  unit_of_measurement: "km/h"
+  icon: mdi:weather-windy
+  value_template: '{{ value_json.windSpeed_kph | round(0) }}'
+
+- platform: mqtt
+  state_topic: "domotica/weewx/loop"
+  name: "Windrichting"
+  unit_of_measurement: "°"
+  icon: mdi:compass
+  value_template: '{{ value_json.windDir | round(0) }}'
+
+- platform: mqtt
+  state_topic: "domotica/weewx/loop"
+  name: "Windsnelheid (max)"
+  unit_of_measurement: "km/h"
+  icon: mdi:speedometer
+  value_template: '{{ value_json.windGust_kph | round(0) }}'
+

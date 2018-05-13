@@ -1,6 +1,20 @@
-*
-!*.yaml
-!scenes
-!.gitignore
+# Wildcards
+*				# Ignore everything
+!*/				# Descent into directories
+
+home-assistant.log
+*.log
+*.db
+*.db-journal
+
+!*.yaml				# you need to pickup yaml files
+!scenes				# and scenes
+!.gitignore			# and please backup me too
+
+# Sorry, no acces to this:
 secrets.yaml
 known_devices.yaml
+entity_registry.yaml
+
+deps				# Skip some directories
+tts

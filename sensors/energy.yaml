@@ -1,0 +1,17 @@
+# Definitions of all sensors:
+# sensor:
+
+# Solar energy:
+  - platform: mqtt
+    state_topic: "domotica/omnik/telegram"
+    name: "Huidig solar vermogen"
+    unit_of_measurement: "Wh"
+    value_template: '{{ value_json.Power }}'
+
+# Power usage::
+  - platform: mqtt
+    state_topic: "domotica/smartmeter/telegram"
+    name: "Huidig stroomverbruik"
+    unit_of_measurement: "Wh"
+    value_template: '{{ value_json.powerusagec*10 }}'
+
