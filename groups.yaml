@@ -48,3 +48,15 @@ meteo:
     - sensor.windrichting
     - sensor.windsnelheid_max
 
+rolluiken:
+  name: Rolluiken
+  entities:
+    - cover.werkkamer_noord
+    - cover.werkkamer_west
+    - cover.werkkamer_zuid
+
+mc_audio:
+  name: Sonos
+  entities:
+    - input_select.sonos_source
+    - input_number.sonos_volume

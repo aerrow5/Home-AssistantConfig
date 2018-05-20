@@ -5,7 +5,7 @@ homeassistant:
   latitude: !secret home_lati
   longitude: !secret home_long
   # Impacts weather/sunrise data (altitude above sea level in meters)
-  elevation: 0
+  elevation: !secret home_alti
   # metric for Metric, imperial for Imperial
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
@@ -89,15 +89,48 @@ mqtt:
 device_tracker:
   - platform: owntracks
     max_gps_accuracy: 200
+    waypoint_whitelist:
+      - !secret owntracks_user1
   - platform: unifi
-    host: 192.168.0.121
+    host: !secret unifi_ip
     username: !secret unifi_user
     password: !secret unifi_pass
     verify_ssl: False
+    new_device_defaults:
+      track_new_devices: False
+      hide_if_away: False
 
 sensor: !include_dir_merge_list sensors
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 camera: !include cameras.yaml
-cover: !include covers.yaml
+cover: !include_dir_merge_list covers
+
+input_select:
+  sonos_source:
+    name: Sonos Source
+    options:
+      - "3FM"
+      - "538"
+      - "HitRadio Veronica"
+      - "NPO Radio 1"
+      - "NPO Radio 2"
+      - "Q-Music"
+      - "Radio 538 Nonstop 40"
+      - "Radio Veronica"
+      - "Sky Radio"
+      - "SLAM!"
+      - "SLAM! Non Stop"
+      - "VRT Studio Brussel"
+      - "Line-in"
+    initial: "NPO Radio 2"
+    icon: mdi:radio
+
+input_number:
+  sonos_volume:
+    name: Volume
+    initial: 40
+    min: 1
+    max: 100
+    step: 1

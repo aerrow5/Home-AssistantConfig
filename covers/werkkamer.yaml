@@ -1,0 +1,26 @@
+# Covers scripts
+# cover:
+  - platform: mqtt
+    name: "Werkkamer zuid"
+    command_topic: "domotica/lutron/command"
+    qos: 0
+    retain: false
+    payload_open: "KBP, 1.5.2, 10"
+    payload_stop: "KBP, 1.5.2, 9"
+    payload_close: "KBP, 1.5.2, 8"
+  - platform: mqtt
+    name: "Werkkamer west"
+    command_topic: "domotica/lutron/command"
+    qos: 0
+    retain: false
+    payload_open: "KBP, 1.5.2, 12"
+    payload_stop: "KBP, 1.5.2, 1"
+    payload_close: "KBP, 1.5.2, 11"
+  - platform: mqtt
+    name: "Werkkamer noord"
+    command_topic: "domotica/lutron/command"
+    qos: 0
+    retain: false
+    payload_open: "KBP, 1.5.2, 14"
+    payload_stop: "KBP, 1.5.2, 24"
+    payload_close: "KBP, 1.5.2, 13"

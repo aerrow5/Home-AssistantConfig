@@ -8,3 +8,50 @@
       message: "Home Assistant  {{ states.updater.updater.state }}  is now available."
     data:
       title: :New Home Assistant Release"
+
+#### Sonos volume
+- alias: Sonos Volume - set volume HA > Sonos
+  trigger:
+    - platform: state
+      entity_id: input_number.sonos_volume
+  action:
+    service: media_player.volume_set
+    data_template:
+      entity_id: media_player.mc_audio
+      # volume_level: '{{ trigger.to_state.state }}'
+      volume_level: '{{ trigger.to_state.state | multiply(0.01) }}'
+
+- alias: Sonos Volume - feedback Sonos > HA
+  trigger:
+    - platform: state
+      entity_id: media_player.mc_audio
+  condition:
+    - condition: template
+      value_template: "{{ not is_state_attr('media_player.mc_audio', 'volume_level', states('input_slider.sonos_volume')|int / 100) }}"
+  action:
+    service: input_number.set_value
+    data_template:
+      entity_id: input_number.sonos_volume
+      # value: '{{ states.media_player.mc_audio.attributes.volume_level }}'
+      value: '{{ states.media_player.mc_audio.attributes.volume_level | multiply(100) | int }}'
+
+#### Sonos playlist select
+- alias: Sonos Playlist - select HA > Sonos
+  trigger:
+    - platform: state
+      entity_id: input_select.sonos_source
+  action:
+    service: media_player.select_source
+    data_template:
+      entity_id: media_player.mc_audio
+      source: '{{ trigger.to_state.state }}'
+
+- alias: Sonos Playlist - feedback Sonos > HA
+  trigger:
+    - platform: state
+      entity_id: media_player.mc_audio
+  action:
+    service: input_select.select_option
+    data_template:
+      entity_id: input_select.sonos_source
+      option: '{{ states.media_player.mc_audio.attributes.source }}'
