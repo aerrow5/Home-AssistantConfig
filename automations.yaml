@@ -55,3 +55,27 @@
     data_template:
       entity_id: input_select.sonos_source
       option: '{{ states.media_player.mc_audio.attributes.source }}'
+
+#### Sonos Volume mute
+- alias: Sonos mute - HA > Sonos
+  trigger:
+    - platform: state
+      entity_id: input_boolean.sonos_mute
+  action:
+    service: media_player.volume_mute
+    data_template:
+      entity_id: media_player.mc_audio
+      is_volume_muted: '{{ trigger.to_state.state }}'
+
+#- alias: Sonos mute - Sonos > HA - set to ON
+#  trigger:
+#    - platform: state
+#      entity_id: media_player.mc_audio
+#  action:
+#    service_template: >
+#      {% if is_state('media_player.mc_audio.attributes.is_volume_muted', 'true') %}
+#      input_boolean.turn_on
+#      {% else %}
+#      input_boolean.turn_off
+#      {% endif %}
+#    entity_id: input_boolean.sonos_mute

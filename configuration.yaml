@@ -25,7 +25,9 @@ config:
 
 http:
   # Secrets are defined in the file secrets.yaml
-  # api_password: !secret http_password
+  api_password: !secret http_password
+  trusted_networks: !secret http_trusted_networks
+  ip_ban_enabled: true
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   # base_url: example.duckdns.org:8123
 
@@ -106,6 +108,7 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 camera: !include cameras.yaml
 cover: !include_dir_merge_list covers
+light: !include_dir_merge_list lights
 
 input_select:
   sonos_source:
@@ -134,3 +137,9 @@ input_number:
     min: 1
     max: 100
     step: 1
+
+input_boolean:
+  sonos_mute:
+    name: Mute
+    initial: off
+    icon: mdi:volume-off

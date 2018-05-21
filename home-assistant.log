@@ -1,14 +1,1 @@
-2018-05-20 12:00:44 ERROR (MainThread) [homeassistant.core] Invalid service data for input_select.select_option: extra keys not allowed @ data['value']. Got 'Radio 538 Nonstop 40'
-required key not provided @ data['option']. Got None
-2018-05-20 12:00:52 ERROR (MainThread) [homeassistant.core] Invalid service data for input_select.select_option: extra keys not allowed @ data['value']. Got 'Radio 538 Nonstop 40'
-required key not provided @ data['option']. Got None
-2018-05-20 12:00:54 ERROR (MainThread) [homeassistant.core] Invalid service data for input_select.select_option: extra keys not allowed @ data['value']. Got 'Radio 538 Nonstop 40'
-required key not provided @ data['option']. Got None
-2018-05-20 12:00:56 ERROR (MainThread) [homeassistant.core] Invalid service data for input_select.select_option: extra keys not allowed @ data['value']. Got 'Radio 538 Nonstop 40'
-required key not provided @ data['option']. Got None
-2018-05-20 12:00:58 ERROR (MainThread) [homeassistant.core] Invalid service data for input_select.select_option: extra keys not allowed @ data['value']. Got 'Radio 538 Nonstop 40'
-required key not provided @ data['option']. Got None
-2018-05-20 12:01:20 ERROR (MainThread) [homeassistant.core] Invalid service data for input_select.select_option: extra keys not allowed @ data['value']. Got 'Radio 538 Nonstop 40'
-required key not provided @ data['option']. Got None
-2018-05-20 12:02:23 ERROR (MainThread) [homeassistant.core] Invalid service data for input_select.select_option: extra keys not allowed @ data['value']. Got 'Radio 538 Nonstop 40'
-required key not provided @ data['option']. Got None
+2018-05-21 12:52:22 ERROR (MainThread) [homeassistant.config] Invalid config for [light.mqtt_template]: invalid template (TemplateAssertionError: no filter named 'brightness') for dictionary value @ data['command_on_template']. Got '{"state": "on" {%- if brightness is defined -%} , "brightness: {{ int | brightness/2.55 }} {%- endif -%} }\n'. (See ?, line ?). Please check the docs at https://home-assistant.io/components/light.mqtt_template/

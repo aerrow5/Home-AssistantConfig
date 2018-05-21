@@ -24,3 +24,10 @@
     payload_open: "KBP, 1.5.2, 14"
     payload_stop: "KBP, 1.5.2, 24"
     payload_close: "KBP, 1.5.2, 13"
+
+  - platform: group
+    name: "Rolluiken werkkamer"
+    entities:
+      - cover.werkkamer_zuid
+      - cover.werkkamer_west
+      - cover.werkkamer_noord

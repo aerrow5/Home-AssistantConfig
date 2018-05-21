@@ -48,15 +48,53 @@ meteo:
     - sensor.windrichting
     - sensor.windsnelheid_max
 
-rolluiken:
-  name: Rolluiken
-  entities:
-    - cover.werkkamer_noord
-    - cover.werkkamer_west
-    - cover.werkkamer_zuid
-
 mc_audio:
   name: Sonos
   entities:
     - input_select.sonos_source
     - input_number.sonos_volume
+    - input_boolean.sonos_mute
+
+werkkamer_rolluiken:
+  name: Rolluiken werkkamer
+  entities:
+    - cover.werkkamer_noord
+    - cover.werkkamer_west
+    - cover.werkkamer_zuid
+
+homepage_view:
+  view: yes
+  icon: mdi:home
+  entities:
+    - group.datetime
+    - group.energy
+    - group.statedevices
+    - group.meteo
+    - group.mc_audio
+    - camera.buienradar
+    - camera.lightningmaps
+    - camera.oprit
+
+david_view:
+  name: Kamer David
+  view: yes
+  entities:
+    - media_player.david_slaapkamer_stereo
+
+keuken_view:
+  name: Keuken
+  view: yes
+
+werkkamer_view:
+  name: Werkkamer
+  view: yes
+  entities:
+    - group.werkkamer_rolluiken
+    - cover.rolluiken_werkkamer
+
+#automation_view:
+#  name: Automation
+#  view: yes
+#  entities:
+#    - group.all_automations
+#    - group.all_scripts

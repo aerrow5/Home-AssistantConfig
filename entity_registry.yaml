@@ -14,3 +14,23 @@ media_player.mc_audio:
   name: Sonos
   platform: sonos
   unique_id: RINCON_000E5827C8FC01400
+sensor.br_humidity:
+  name:
+  platform: buienradar
+  unique_id: 51.3269593.860939humidity
+sensor.br_symbol:
+  name:
+  platform: buienradar
+  unique_id: 51.3269593.860939symbol
+sensor.br_wind_speed:
+  name:
+  platform: buienradar
+  unique_id: 51.3269593.860939windspeed
+sensor.br_pressure:
+  name:
+  platform: buienradar
+  unique_id: 51.3269593.860939pressure
+sensor.br_temperature:
+  name:
+  platform: buienradar
+  unique_id: 51.3269593.860939temperature
