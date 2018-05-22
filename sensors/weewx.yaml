@@ -57,28 +57,28 @@
   name: "Regen (vandaag)"
   unit_of_measurement: "mm"
   icon: mdi:water
-  value_template: '{{ float(value_json.dayRain_cm)*10 | round(1) }}'
+  value_template: '{{ (float(value_json.dayRain_cm)*10) | round(1) }}'
 
 - platform: mqtt
   state_topic: "domotica/weewx/loop"
   name: "Regen (24h)"
   unit_of_measurement: "mm"
   icon: mdi:water
-  value_template: '{{ float(value_json.rain24_cm)*10 | round(1) }}'
+  value_template: '{{ (float(value_json.rain24_cm)*10) | round(1) }}'
 
 - platform: mqtt
   state_topic: "domotica/weewx/loop"
   name: "Regenval ratio (24h)"
   unit_of_measurement: "mm"
   icon: mdi:water
-  value_template: '{{ float(value_json.hourRain_cm)*10 | round(1) }}'
+  value_template: '{{ (float(value_json.hourRain_cm)*10) | round(1) }}'
 
 - platform: mqtt
   state_topic: "domotica/weewx/loop"
   name: "Regen ratio"
   unit_of_measurement: "mm/h"
   icon: mdi:water
-  value_template: '{{ float(value_json.rainRate_cm_per_hour)*10 | round(1) }}'
+  value_template: '{{ (float(value_json.rainRate_cm_per_hour)*10) | round(1) }}'
 
 ## Wind speed, gusts and direction
 

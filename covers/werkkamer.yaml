@@ -3,6 +3,7 @@
   - platform: mqtt
     name: "Werkkamer zuid"
     command_topic: "domotica/lutron/command"
+#    state_topic: "domotica/lutron/KLS/01-05-02"
     qos: 0
     retain: false
     payload_open: "KBP, 1.5.2, 10"
@@ -11,14 +12,29 @@
   - platform: mqtt
     name: "Werkkamer west"
     command_topic: "domotica/lutron/command"
+    state_topic: "domotica/lutron/KLS/01-05-02"
     qos: 0
     retain: false
     payload_open: "KBP, 1.5.2, 12"
     payload_stop: "KBP, 1.5.2, 1"
     payload_close: "KBP, 1.5.2, 11"
+    state_open: "open"
+    state_closed: "closed"
+    state_stop: "stop"
+    value_template: >
+      {% if ((value[0:1])=='1') %}
+        'stop'
+      {% elif ((value[11:1])=='1') %}
+        'open'
+      {% elif ((value[10:1])=='1') %}
+        'closed'
+      {% else  %}
+        'nonfound:'+value
+      {% endif %}
   - platform: mqtt
     name: "Werkkamer noord"
     command_topic: "domotica/lutron/command"
+#    state_topic: "domotica/lutron/KLS/01-05-02"
     qos: 0
     retain: false
     payload_open: "KBP, 1.5.2, 14"

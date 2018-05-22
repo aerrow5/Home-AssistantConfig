@@ -6,13 +6,12 @@
     command_topic: "domotica/lutron/command"
     state_topic: "domotica/lutron/status/01-01-00-01-01"
     command_on_template: >
-      {"state": "on"
+      {"state": "on", "type": "DL", "addr": "1.1.0.1.1"
       {%- if brightness is defined -%}
       , "brightness": {{ (float(brightness)/2.55)|round(0) }}
       {%- endif -%}
-      , "type": "DL", "addr": "1.1.0.1.1"
       }
-    command_off_template: '{"state": "off"}'
+    command_off_template: '{"state": "off", "type": "DL", "addr": "1.1.0.1.1"}'
     state_template: '{{ value_json.state }}'
     brightness_template: "{{ (float(value_json.brightness)*2.55)|round(0) }}"
 #    brightness_template: "{{ value_json.brightness }}"
