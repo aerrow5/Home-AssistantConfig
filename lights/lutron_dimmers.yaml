@@ -1,8 +1,7 @@
-## definition of all lights:
-## light:
-## domotica/lutron/DL/01-01-00-01-01  60
+## Lights definitions for Dimmers Lutron
+## lights:
   - platform: mqtt_template
-    name: "Werkkamer verlichting"
+    name: "Werkkamer"
     command_topic: "domotica/lutron/command"
     state_topic: "domotica/lutron/status/01-01-00-01-01"
     command_on_template: >
@@ -14,8 +13,201 @@
     command_off_template: '{"state": "off", "type": "DL", "addr": "1.1.0.1.1"}'
     state_template: '{{ value_json.state }}'
     brightness_template: "{{ (float(value_json.brightness)*2.55)|round(0) }}"
-#    brightness_template: "{{ value_json.brightness }}"
-#    brightness_scale: 100
-#    on_command_type: 'brightness'
-#    payload_off: "OFF"
-#    payload_off: "FADEDIM, 0, 0, 0, 1.1.0.1.1"
+  - platform: mqtt_template
+    name: "Entreehal"
+    command_topic: "domotica/lutron/command"
+    state_topic: "domotica/lutron/status/01-01-00-01-04"
+    command_on_template: >
+      {"state": "on", "type": "DL", "addr": "1.1.0.1.4"
+      {%- if brightness is defined -%}
+      , "brightness": {{ (float(brightness)/2.55)|round(0) }}
+      {%- endif -%}
+      }
+    command_off_template: '{"state": "off", "type": "DL", "addr": "1.1.0.1.4"}'
+    state_template: '{{ value_json.state }}'
+    brightness_template: "{{ (float(value_json.brightness)*2.55)|round(0) }}"
+  - platform: mqtt_template
+    name: "Hal"
+    command_topic: "domotica/lutron/command"
+    state_topic: "domotica/lutron/status/01-01-00-01-03"
+    command_on_template: >
+      {"state": "on", "type": "DL", "addr": "1.1.0.1.3"
+      {%- if brightness is defined -%}
+      , "brightness": {{ (float(brightness)/2.55)|round(0) }}
+      {%- endif -%}
+      }
+    command_off_template: '{"state": "off", "type": "DL", "addr": "1.1.0.1.3"}'
+    state_template: '{{ value_json.state }}'
+    brightness_template: "{{ (float(value_json.brightness)*2.55)|round(0) }}"
+  - platform: mqtt_template
+    name: "Bibliotheek"
+    command_topic: "domotica/lutron/command"
+    state_topic: "domotica/lutron/status/01-01-00-01-02"
+    command_on_template: >
+      {"state": "on", "type": "DL", "addr": "1.1.0.1.2"
+      {%- if brightness is defined -%}
+      , "brightness": {{ (float(brightness)/2.55)|round(0) }}
+      {%- endif -%}
+      }
+    command_off_template: '{"state": "off", "type": "DL", "addr": "1.1.0.1.2"}'
+    state_template: '{{ value_json.state }}'
+    brightness_template: "{{ (float(value_json.brightness)*2.55)|round(0) }}"
+  - platform: mqtt_template
+    name: "Overloop boven"
+    command_topic: "domotica/lutron/command"
+    state_topic: "domotica/lutron/status/01-01-00-04-04"
+    command_on_template: >
+      {"state": "on", "type": "DL", "addr": "1.1.0.4.4"
+      {%- if brightness is defined -%}
+      , "brightness": {{ (float(brightness)/2.55)|round(0) }}
+      {%- endif -%}
+      }
+    command_off_template: '{"state": "off", "type": "DL", "addr": "1.1.0.4.4"}'
+    state_template: '{{ value_json.state }}'
+    brightness_template: "{{ (float(value_json.brightness)*2.55)|round(0) }}"
+  - platform: mqtt_template
+    name: "Keuken"
+    command_topic: "domotica/lutron/command"
+    state_topic: "domotica/lutron/status/01-01-00-03-03"
+    command_on_template: >
+      {"state": "on", "type": "DL", "addr": "1.1.0.3.3"
+      {%- if brightness is defined -%}
+      , "brightness": {{ (float(brightness)/2.55)|round(0) }}
+      {%- endif -%}
+      }
+    command_off_template: '{"state": "off", "type": "DL", "addr": "1.1.0.3.3"}'
+    state_template: '{{ value_json.state }}'
+    brightness_template: "{{ (float(value_json.brightness)*2.55)|round(0) }}"
+
+  - platform: mqtt_template
+    name: "Keukenblok"
+    command_topic: "domotica/lutron/command"
+    state_topic: "domotica/lutron/status/01-01-00-03-02"
+    command_on_template: >
+      {"state": "on", "type": "DL", "addr": "1.1.0.3.2"
+      {%- if brightness is defined -%}
+      , "brightness": {{ (float(brightness)/2.55)|round(0) }}
+      {%- endif -%}
+      }
+    command_off_template: '{"state": "off", "type": "DL", "addr": "1.1.0.3.2"}'
+    state_template: '{{ value_json.state }}'
+    brightness_template: "{{ (float(value_json.brightness)*2.55)|round(0) }}"
+
+  - platform: mqtt_template
+    name: "Keukentafel"
+    command_topic: "domotica/lutron/command"
+    state_topic: "domotica/lutron/status/01-01-00-03-01"
+    command_on_template: >
+      {"state": "on", "type": "DL", "addr": "1.1.0.3.1"
+      {%- if brightness is defined -%}
+      , "brightness": {{ (float(brightness)/2.55)|round(0) }}
+      {%- endif -%}
+      }
+    command_off_template: '{"state": "off", "type": "DL", "addr": "1.1.0.3.1"}'
+    state_template: '{{ value_json.state }}'
+    brightness_template: "{{ (float(value_json.brightness)*2.55)|round(0) }}"
+  - platform: mqtt_template
+    name: "Woonkamer Bank"
+    command_topic: "domotica/lutron/command"
+    state_topic: "domotica/lutron/status/01-01-00-02-01"
+    command_on_template: >
+      {"state": "on", "type": "DL", "addr": "1.1.0.2.1"
+      {%- if brightness is defined -%}
+      , "brightness": {{ (float(brightness)/2.55)|round(0) }}
+      {%- endif -%}
+      }
+    command_off_template: '{"state": "off", "type": "DL", "addr": "1.1.0.2.1"}'
+    state_template: '{{ value_json.state }}'
+    brightness_template: "{{ (float(value_json.brightness)*2.55)|round(0) }}"
+  - platform: mqtt_template
+    name: "Woonkamer Antieke kast"
+    command_topic: "domotica/lutron/command"
+    state_topic: "domotica/lutron/status/01-01-00-02-02"
+    command_on_template: >
+      {"state": "on", "type": "DL", "addr": "1.1.0.2.2"
+      {%- if brightness is defined -%}
+      , "brightness": {{ (float(brightness)/2.55)|round(0) }}
+      {%- endif -%}
+      }
+    command_off_template: '{"state": "off", "type": "DL", "addr": "1.1.0.2.2"}'
+    state_template: '{{ value_json.state }}'
+    brightness_template: "{{ (float(value_json.brightness)*2.55)|round(0) }}"
+  - platform: mqtt_template
+    name: "Woonkamer Raam"
+    command_topic: "domotica/lutron/command"
+    state_topic: "domotica/lutron/status/01-01-00-02-03"
+    command_on_template: >
+      {"state": "on", "type": "DL", "addr": "1.1.0.2.3"
+      {%- if brightness is defined -%}
+      , "brightness": {{ (float(brightness)/2.55)|round(0) }}
+      {%- endif -%}
+      }
+    command_off_template: '{"state": "off", "type": "DL", "addr": "1.1.0.2.3"}'
+    state_template: '{{ value_json.state }}'
+    brightness_template: "{{ (float(value_json.brightness)*2.55)|round(0) }}"
+  - platform: mqtt_template
+    name: "Woonkamer Zithoek"
+    command_topic: "domotica/lutron/command"
+    state_topic: "domotica/lutron/status/01-01-00-02-04"
+    command_on_template: >
+      {"state": "on", "type": "DL", "addr": "1.1.0.2.4"
+      {%- if brightness is defined -%}
+      , "brightness": {{ (float(brightness)/2.55)|round(0) }}
+      {%- endif -%}
+      }
+    command_off_template: '{"state": "off", "type": "DL", "addr": "1.1.0.2.4"}'
+    state_template: '{{ value_json.state }}'
+    brightness_template: "{{ (float(value_json.brightness)*2.55)|round(0) }}"
+  - platform: mqtt_template
+    name: "Master bedroom bed"
+    command_topic: "domotica/lutron/command"
+    state_topic: "domotica/lutron/status/01-01-00-04-01"
+    command_on_template: >
+      {"state": "on", "type": "DL", "addr": "1.1.0.4.1"
+      {%- if brightness is defined -%}
+      , "brightness": {{ (float(brightness)/2.55)|round(0) }}
+      {%- endif -%}
+      }
+    command_off_template: '{"state": "off", "type": "DL", "addr": "1.1.0.4.1"}'
+    state_template: '{{ value_json.state }}'
+    brightness_template: "{{ (float(value_json.brightness)*2.55)|round(0) }}"
+  - platform: mqtt_template
+    name: "Master bedroom kamer"
+    command_topic: "domotica/lutron/command"
+    state_topic: "domotica/lutron/status/01-01-00-04-02"
+    command_on_template: >
+      {"state": "on", "type": "DL", "addr": "1.1.0.4.2"
+      {%- if brightness is defined -%}
+      , "brightness": {{ (float(brightness)/2.55)|round(0) }}
+      {%- endif -%}
+      }
+    command_off_template: '{"state": "off", "type": "DL", "addr": "1.1.0.4.2"}'
+    state_template: '{{ value_json.state }}'
+    brightness_template: "{{ (float(value_json.brightness)*2.55)|round(0) }}"
+  - platform: mqtt_template
+    name: "Badkamer 1"
+    command_topic: "domotica/lutron/command"
+    state_topic: "domotica/lutron/status/01-01-00-04-03"
+    command_on_template: >
+      {"state": "on", "type": "DL", "addr": "1.1.0.4.3"
+      {%- if brightness is defined -%}
+      , "brightness": {{ (float(brightness)/2.55)|round(0) }}
+      {%- endif -%}
+      }
+    command_off_template: '{"state": "off", "type": "DL", "addr": "1.1.0.4.3"}'
+    state_template: '{{ value_json.state }}'
+    brightness_template: "{{ (float(value_json.brightness)*2.55)|round(0) }}"
+  - platform: mqtt_template
+    name: "Badkamer 2"
+    command_topic: "domotica/lutron/command"
+    state_topic: "domotica/lutron/status/01-01-00-03-04"
+    command_on_template: >
+      {"state": "on", "type": "DL", "addr": "1.1.0.3.4"
+      {%- if brightness is defined -%}
+      , "brightness": {{ (float(brightness)/2.55)|round(0) }}
+      {%- endif -%}
+      }
+    command_off_template: '{"state": "off", "type": "DL", "addr": "1.1.0.3.4"}'
+    state_template: '{{ value_json.state }}'
+    brightness_template: "{{ (float(value_json.brightness)*2.55)|round(0) }}"
+

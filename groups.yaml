@@ -29,10 +29,12 @@ statedevices:
     - device_tracker.davidsiphone
     - device_tracker.geesm
     - device_tracker.i4arthur
+    - device_tracker.iphonevnevelien
 
 meteo:
   name: Meteo
   entities:
+    - sensor.laatste_update
     - sensor.temperatuur_buiten_dak
     - sensor.vochtigheid_buiten
     - sensor.dauwpunt
@@ -81,16 +83,43 @@ david_view:
   entities:
     - media_player.david_slaapkamer_stereo
 
-keuken_view:
+keuken:
   name: Keuken
-  view: yes
+  entities:
+    - light.keuken
+    - light.keukenblok
+    - light.keukentafel
 
-werkkamer_view:
+woonkamer:
+  name: Woonkamer
+  entities:
+    - light.woonkamer_bank
+    - light.woonkamer_antieke_kast
+    - light.woonkamer_raam
+    - light.woonkamer_zithoek
+
+werkkamer:
   name: Werkkamer
-  view: yes
   entities:
     - group.werkkamer_rolluiken
     - cover.rolluiken_werkkamer
+    - light.werkkamer
+
+beneden_view:
+  name: Beneden verdieping
+  view: yes
+  entities:
+    - group.keuken
+    - group.woonkamer
+    - group.werkkamer
+
+#tracker:
+#  name: Anybody home
+#  entities:
+#  - device_tracker.davidsiphone
+#  - device_tracker.geesm
+#  - device_tracker.i4arthur
+#  - device_tracker.user_arthur_iphone
 
 #automation_view:
 #  name: Automation

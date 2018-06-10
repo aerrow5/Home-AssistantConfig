@@ -1,0 +1,12 @@
+### scene:
+  - name: First enters home night
+    entities:
+      switch.bijkeuken:
+        state: on
+      light.keukentafel:
+        state: on
+        brightness: 40
+      light.hal:
+        state: on
+        brightness: 40
+

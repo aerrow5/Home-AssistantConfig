@@ -1,0 +1,24 @@
+## Lutron on/off lights
+## switch:
+  - platform: mqtt
+    name: "Bijkeuken"
+    command_topic: "domotica/lutron/command/KLS/01-04-03/24"
+    state_topic: "domotica/lutron/KLS/01-04-03"
+    # command_template: "KBP, [01:04:03], 24"
+    value_template: >-
+      {% if value[23]=='1' %}
+        ON
+      {% else %}
+        OFF
+      {% endif %}
+  - platform: mqtt
+    name: "Led licht overloop"
+    command_topic: "domotica/lutron/command/KLS/01-04-17/3"
+    state_topic: "domotica/lutron/KLS/01-04-17"
+    # command_template: "KBP, [01:04:17], 3"
+    value_template: >-
+      {% if value[2]=='1' %}
+        ON
+      {% else %}
+        OFF
+      {% endif %}

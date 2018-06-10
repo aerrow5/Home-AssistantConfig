@@ -4,6 +4,14 @@
 # Weewx sensors of meteostation:
 - platform: mqtt
   state_topic: "domotica/weewx/loop"
+  name: "Laatste update"
+  unit_of_measurement: ""
+  icon: mdi:calendar-clock
+  value_template: '{{ float(value_json.dateTime) | timestamp_local }}'
+# domotica/weewx/dateTime 1527015000.0
+
+- platform: mqtt
+  state_topic: "domotica/weewx/loop"
   name: "Temperatuur buiten (dak)"
   unit_of_measurement: "°C"
   icon: mdi:thermometer

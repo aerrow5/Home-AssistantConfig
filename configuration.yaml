@@ -79,10 +79,14 @@ notify:
 # Media players:
 media_player:
   - platform: sonos
-    hosts: 192.168.0.99
+    hosts: !secret sonos_ip
+  - platform: philips_js
+    name: TV Woonkamer
+    #turn_on_action: true
+    host: !secret philips_ip
 
 mqtt:
-  broker: 192.168.0.110
+  broker: !secret mqtt_ip
   port: 1883
   client_id: home-assistant-1
   username: !secret mqtt_user
@@ -109,6 +113,8 @@ script: !include scripts.yaml
 camera: !include cameras.yaml
 cover: !include_dir_merge_list covers
 light: !include_dir_merge_list lights
+switch: !include_dir_merge_list switches
+scene: !include scenes.yaml
 
 input_select:
   sonos_source:

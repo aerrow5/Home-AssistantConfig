@@ -1,1 +1,4 @@
-2018-05-22 06:48:58 WARNING (MainThread) [homeassistant.components.cover.mqtt] Payload is not True, False, or integer (0-100): 'nonfound:'+value
+2018-06-10 12:44:12 ERROR (MainThread) [homeassistant.config] Invalid config for [automation]: extra keys not allowed @ data['condition'][2]['endity_id']. Got None
+extra keys not allowed @ data['condition'][2]['state']. Got None
+not a valid value for dictionary value @ data['condition'][2]['condition']. Got None
+required key not provided @ data['condition'][2]['entity_id']. Got None. (See /home/homeassistant/.homeassistant/configuration.yaml, line 110). Please check the docs at https://home-assistant.io/components/automation/

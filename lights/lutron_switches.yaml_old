@@ -1,0 +1,13 @@
+## lights:
+  - platform: mqtt_template
+    name: "Bijkeuken"
+    command_topic: "domotica/lutron/command"
+    state_topic: "domotica/lutron/KLS/01-04-03"
+    command_on_template: "KBP, [01:04:03], 24"
+    command_off_template: "KBP, [01:04:03], 24"
+    state_template: >-
+      {% if value[23]=='1' %}
+        ON
+      {% else %}
+        OFF
+      {% endif %}

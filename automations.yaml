@@ -79,3 +79,61 @@
 #      input_boolean.turn_off
 #      {% endif %}
 #    entity_id: input_boolean.sonos_mute
+
+### Close cover, when sun goes beyond azimuth and temperature is too high
+- alias: Close cover west when too hot
+  trigger:
+    platform: numeric_state
+    entity_id: sun.sun
+    value_template: "{{ states.sun.sun.attributes.azimuth }}"
+    above: 190
+  condition:
+    condition: and
+    conditions:
+      - condition: numeric_state
+        entity_id: sensor.temperatuur_buiten_dak
+        above: 22
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: cover.werkkamer_west
+            state: 'open'
+          - condition: state
+            entity_id: cover.werkkamer_west
+            state: '50'
+  action:
+    - service: cover.close_cover
+      data:
+        entity_id: cover.werkkamer_west
+
+### Guidance indoor and outdoor when it's dark
+### Get home and enable the lights:
+- alias: First one getting home
+  trigger:
+    - platform: state
+      entity_id: group.all_devices
+      to: 'home'
+      from: 'not_home'
+
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'home'
+    - condition: state
+      entity_id: sun.sun
+      state: 'below_horizon'
+    - condition: state
+      entity_id: switch.led_licht_overloop
+      state: 'off'
+
+  action:
+    - service: scene.turn_on
+      entity_id: scene.first_enters_home_night
+#    - service: switch.turn_on
+#      entity_id: 
+#        - switch.bijkeuken
+#    - service: light.turn_on
+#      entity_id:
+#        - light.keukentafel
+#        - light.hal
+### todo: add outside lights

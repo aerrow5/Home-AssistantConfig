@@ -1,0 +1,21 @@
+## definition of all lights:
+## light:
+## domotica/lutron/DL/01-01-00-01-01  60
+  - platform: mqtt_template
+    name: "Werkkamer verlichting"
+    command_topic: "domotica/lutron/command"
+    state_topic: "domotica/lutron/status/01-01-00-01-01"
+    command_on_template: >
+      {"state": "on", "type": "DL", "addr": "1.1.0.1.1"
+      {%- if brightness is defined -%}
+      , "brightness": {{ (float(brightness)/2.55)|round(0) }}
+      {%- endif -%}
+      }
+    command_off_template: '{"state": "off", "type": "DL", "addr": "1.1.0.1.1"}'
+    state_template: '{{ value_json.state }}'
+    brightness_template: "{{ (float(value_json.brightness)*2.55)|round(0) }}"
+#    brightness_template: "{{ value_json.brightness }}"
+#    brightness_scale: 100
+#    on_command_type: 'brightness'
+#    payload_off: "OFF"
+#    payload_off: "FADEDIM, 0, 0, 0, 1.1.0.1.1"
